@@ -13,7 +13,6 @@ if [ -n "${CLIENT_MAX_BODY_SIZE:-}" ]; then
     sed -i "s%client_max_body_size 500M;%client_max_body_size ${CLIENT_MAX_BODY_SIZE};%g" /etc/nginx/nginx.conf
 fi
 
-
 if [ -n "${UID:-}" ]; then
     chmod go+w /dev/stderr /dev/stdout
     gosu $UID mkdir -p /media/.tmp
