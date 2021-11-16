@@ -7,6 +7,8 @@ docker run --restart always --detach --name webdav --publish 7000:8080 \
            --env UID=$UID --volume $PWD:/media ionelmc/webdav
 ```
 
+## Configure
+
 Optionally you can add two environment variables to require HTTP basic authentication:
 
 * WEBDAV_USERNAME
@@ -27,3 +29,9 @@ docker run --restart always --detach --name webdav --publish 7000:8080 \
            --env CLIENT_MAX_BODY_SIZE=50G \
            --env UID=$UID --volume $PWD:/media ionelmc/webdav
 ```
+
+## Build
+See [docker help](https://docs.docker.com/docker-hub/)
+
+`docker build -t tomaskafka/docker-webdav-ionelmc-tkafka .`
+`docker push tomaskafka/docker-webdav-ionelmc-tkafka`
