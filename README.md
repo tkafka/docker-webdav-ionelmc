@@ -35,21 +35,30 @@ See [docker help](https://docs.docker.com/docker-hub/)
 
 Use any tag you like:
 
-`docker build -t docker-webdav-ionelmc-tkafka:nginx-alpine .`
-
 `docker build -t docker-webdav-ionelmc-tkafka:bionic -t docker-webdav-ionelmc-tkafka:latest .`
 
 ## Test it
 
-`docker run -e WEBDAV_USERNAME=www -e WEBDAV_PASSWORD=password -e CLIENT_MAX_BODY_SIZE=1G docker-webdav-ionelmc-tkafka:latest`
+Name a container `webdav`
+
+`docker run --name webdav -e WEBDAV_USERNAME=www -e WEBDAV_PASSWORD=password -e CLIENT_MAX_BODY_SIZE=1G docker-webdav-ionelmc-tkafka:latest`
 
 ## Poke it
 
-`docker exec -it docker-webdav-ionelmc-tkafka:latest /bin/bash`
+Use container name `webdav`
+
+`docker exec -it webdav /bin/bash`
+
+## Tag it
+
+`docker tag tomaskafka/docker-webdav-ionelmc-tkafka tomaskafka/docker-webdav-ionelmc-tkafka:bionic`
+`docker tag tomaskafka/docker-webdav-ionelmc-tkafka tomaskafka/docker-webdav-ionelmc-tkafka:latest`
+
 
 ## Push it
 
-`docker push tomaskafka/docker-webdav-ionelmc-tkafka`
+`docker push tomaskafka/docker-webdav-ionelmc-tkafka:bionic`
+`docker push tomaskafka/docker-webdav-ionelmc-tkafka:latest`
 
 ## Delete it
 
