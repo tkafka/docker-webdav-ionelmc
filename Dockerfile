@@ -1,7 +1,5 @@
 FROM ubuntu:bionic
 
-ARG http_proxy
-ARG https_proxy
 RUN apt-get update \
  && apt-get install -yq --no-install-recommends nginx-extras libnginx-mod-http-dav-ext gosu apache2-utils \
  && rm -rf /var/lib/apt/lists/*

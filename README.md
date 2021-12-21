@@ -45,7 +45,7 @@ See [howto](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-image
 Init once:
 `docker buildx create --use`
 
-Build:
+Buil and push:
 `docker buildx build --platform linux/amd64,linux/arm64 --push -t tomaskafka/docker-webdav-ionelmc-tkafka:latest -t tomaskafka/docker-webdav-ionelmc-tkafka:bionic .`
 
 ## Build it old way for single platform
@@ -56,11 +56,11 @@ Use any tag you like:
 `docker build -t docker-webdav-ionelmc-tkafka:bionic -t docker-webdav-ionelmc-tkafka:latest .`
 
 
-### Test it
+### Run it locally
 
 Name a container `webdav`
 
-`docker run --name webdav -e WEBDAV_USERNAME=www -e WEBDAV_PASSWORD=password -e CLIENT_MAX_BODY_SIZE=1G docker-webdav-ionelmc-tkafka:latest`
+`docker run --name webdav --volume $PWD:/media -e WEBDAV_USERNAME=www -e WEBDAV_PASSWORD=password -e CLIENT_MAX_BODY_SIZE=1G docker-webdav-ionelmc-tkafka:latest`
 
 ### Poke it
 
