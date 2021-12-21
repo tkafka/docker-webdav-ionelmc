@@ -30,8 +30,17 @@ docker run --restart always --detach --name webdav --publish 7000:8080 \
            --env UID=$UID --volume $PWD:/media ionelmc/webdav
 ```
 
-## Build
+## Build it
 See [docker help](https://docs.docker.com/docker-hub/)
 
-`docker build -t tomaskafka/docker-webdav-ionelmc-tkafka .`
+Use any tag you like:
+
+`docker build -t docker-webdav-ionelmc-tkafka:nginx-alpine .`
+
+## Test it
+
+`docker run docker-webdav-ionelmc-tkafka:nginx-alpine`
+
+## Push it
+
 `docker push tomaskafka/docker-webdav-ionelmc-tkafka`
