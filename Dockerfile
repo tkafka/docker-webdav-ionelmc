@@ -13,5 +13,9 @@ VOLUME /media
 COPY entrypoint.sh /
 COPY nginx.conf /etc/nginx/
 
+ENV HTTP_PORT=80
+ENV HTTPS_PORT=443
+ENV CLIENT_MAX_BODY_SIZE=500M
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

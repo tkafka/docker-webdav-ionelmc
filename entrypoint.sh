@@ -9,6 +9,22 @@ else
     sed -i 's%auth_basic_user_file webdavpasswd;% %g' /etc/nginx/nginx.conf
 fi
 
+if [ -n "${HTTP_PORT:-}" ]; then
+    echo "Setting http port to ${HTTP_PORT}"
+else
+    HTTP_PORT=80
+    echo "Keeping default http port ${HTTP_PORT}"
+fi
+sed -i "s%HTTP_PORT%${HTTP_PORT}%g" /etc/nginx/nginx.conf
+
+if [ -n "${HTTPS_PORT:-}" ]; then
+    echo "Setting https port to ${HTTPS_PORT}"
+else
+    HTTP_PORT=443
+    echo "Keeping default https port ${HTTP_PORT}"
+fi
+sed -i "s%HTTPS_PORT%${HTTPS_PORT}%g" /etc/nginx/nginx.conf
+
 if [ -n "${CLIENT_MAX_BODY_SIZE:-}" ]; then
     echo "Setting client_max_body_size to ${CLIENT_MAX_BODY_SIZE}"
 else

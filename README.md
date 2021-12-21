@@ -1,13 +1,21 @@
-# NGINX WebDAV container
+# NGINX WebDAV https container
 
 Usage:
 
 ```bash
-docker run --restart always --detach --name webdav --publish 7000:8080 \
+docker run --restart always --detach --name webdav --publish 443:443 \
            --env UID=$UID --volume $PWD:/media ionelmc/webdav
 ```
 
 ## Configure
+
+### Mandatory
+
+Map `/media` to your media folder
+
+Map `/etc/nginx/cert.crt` and `/etc/nginx/cert.key` to your own https certificate.
+
+### Optional
 
 Optionally you can add two environment variables to require HTTP basic authentication:
 
@@ -34,7 +42,10 @@ docker run --restart always --detach --name webdav --publish 7000:8080 \
 
 See [howto](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
 
+Init once:
 `docker buildx create --use`
+
+Build:
 `docker buildx build --platform linux/amd64,linux/arm64 --push -t tomaskafka/docker-webdav-ionelmc-tkafka:latest -t tomaskafka/docker-webdav-ionelmc-tkafka:bionic .`
 
 ## Build it old way for single platform
