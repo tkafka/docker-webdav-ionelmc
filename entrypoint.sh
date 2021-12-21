@@ -1,6 +1,7 @@
 #!/bin/sh -eux
 
 if [ -n "${WEBDAV_USERNAME:-}" ] && [ -n "${WEBDAV_PASSWORD:-}" ]; then
+    echo "Configured htpasswd for ${WEBDAV_USERNAME}"
     htpasswd -cb /etc/nginx/webdavpasswd $WEBDAV_USERNAME $WEBDAV_PASSWORD
 else
     echo "No htpasswd config done"
