@@ -10,8 +10,11 @@ fi
 
 if [ -n "${CLIENT_MAX_BODY_SIZE:-}" ]; then
     echo "Setting client_max_body_size to ${CLIENT_MAX_BODY_SIZE}"
-    sed -i "s%client_max_body_size 500M;%client_max_body_size ${CLIENT_MAX_BODY_SIZE};%g" /etc/nginx/nginx.conf
+else
+    CLIENT_MAX_BODY_SIZE=500M
+    echo "Keeping default client_max_body_size ${CLIENT_MAX_BODY_SIZE}"
 fi
+sed -i "s%CLIENT_MAX_BODY_SIZE%${CLIENT_MAX_BODY_SIZE}%g" /etc/nginx/nginx.conf
 
 if [ -n "${UID:-}" ]; then
     chmod go+w /dev/stderr /dev/stdout

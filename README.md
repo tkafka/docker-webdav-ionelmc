@@ -37,10 +37,20 @@ Use any tag you like:
 
 `docker build -t docker-webdav-ionelmc-tkafka:nginx-alpine .`
 
+`docker build -t docker-webdav-ionelmc-tkafka:bionic -t docker-webdav-ionelmc-tkafka:latest .`
+
 ## Test it
 
-`docker run docker-webdav-ionelmc-tkafka:nginx-alpine`
+`docker run -e WEBDAV_USERNAME=www -e WEBDAV_PASSWORD=password -e CLIENT_MAX_BODY_SIZE=1G docker-webdav-ionelmc-tkafka:latest`
+
+## Poke it
+
+`docker exec -it docker-webdav-ionelmc-tkafka:latest /bin/bash`
 
 ## Push it
 
 `docker push tomaskafka/docker-webdav-ionelmc-tkafka`
+
+## Delete it
+
+`docker rm docker-webdav-ionelmc-tkafka:latest`
