@@ -82,3 +82,7 @@ Use container name `webdav`
 ### Delete it
 
 `docker rm docker-webdav-ionelmc-tkafka:latest`
+
+## Optimize build
+
+See https://contains.dev/tomaskafka/docker-webdav-ionelmc-tkafka
