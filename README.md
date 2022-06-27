@@ -45,7 +45,7 @@ See [howto](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-image
 Init once:
 `docker buildx create --use`
 
-Buil and push:
+Build and push:
 `docker buildx build --platform linux/amd64,linux/arm64 --push -t tomaskafka/docker-webdav-ionelmc-tkafka:latest -t tomaskafka/docker-webdav-ionelmc-tkafka:bionic .`
 
 ## Build it old way for single platform
