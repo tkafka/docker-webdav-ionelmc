@@ -4,7 +4,7 @@ Usage:
 
 ```bash
 docker run --restart always --detach --name webdav --publish 443:443 \
-           --env UID=$UID --mount $PWD:/media ionelmc/webdav
+           --env UID=$UID --mount type=bind,source="$PWD",target=/media ionelmc/webdav
 ```
 
 ## Configure
@@ -27,7 +27,7 @@ Example:
 ```bash
 docker run --restart always --detach --name webdav --publish 7000:8080 \
            --env WEBDAV_USERNAME=myuser --env WEBDAV_PASSWORD=mypassword \
-           --env UID=$UID --mount $PWD:/media ionelmc/webdav
+           --env UID=$UID --mount type=bind,source="$PWD",target=/media ionelmc/webdav
 ```
 
 And you can set up maximum allowed upload size with `CLIENT_MAX_BODY_SIZE` env. variable, like this:
@@ -35,7 +35,7 @@ And you can set up maximum allowed upload size with `CLIENT_MAX_BODY_SIZE` env. 
 ```bash
 docker run --restart always --detach --name webdav --publish 7000:8080 \
            --env CLIENT_MAX_BODY_SIZE=50G \
-           --env UID=$UID --mount $PWD:/media ionelmc/webdav
+           --env UID=$UID --mount type=bind,source="$PWD",target=/media ionelmc/webdav
 ```
 
 ## Build and push on m1 - this is the way
